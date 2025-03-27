@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Elements Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      video,
+      audio {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 600px;
+      }
+      canvas {
+        border: 1px solid black;
+        margin-top: 20px;
+      }
+      svg {
+        display: block;
+        margin-top: 20px;
+      }
+      .storage-info {
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HTML Elements Demo</h1>
+
+    <!-- Video Element -->
+    <section>
+      <h2>Video Element</h2>
+      <video controls>
+        <source
+          src="https://www.w3schools.com/html/mov_bbb.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <!-- Audio Element -->
+    <section>
+      <h2>Audio Element</h2>
+      <audio controls>
+        <source
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+          type="audio/mp3"
+        />
+        Your browser does not support the audio tag.
+      </audio>
+    </section>
+
+    <!-- Canvas Element -->
+    <section>
+      <h2>Canvas Element</h2>
+      <canvas id="myCanvas" width="300" height="200"></canvas>
+      <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "blue";
+        ctx.fillRect(50, 50, 200, 100);
+      </script>
+    </section>
+
+    <!-- SVG Element -->
+    <section>
+      <h2>SVG Element</h2>
+      <svg width="200" height="200">
+        <circle
+          cx="100"
+          cy="100"
+          r="80"
+          stroke="green"
+          stroke-width="4"
+          fill="yellow"
+        />
+        <rect
+          x="50"
+          y="50"
+          width="100"
+          height="100"
+          stroke="black"
+          stroke-width="2"
+          fill="red"
+        />
+      </svg>
+    </section>
+
+    <!-- Local Storage and Session Storage Demo -->
+    <section class="storage-info">
+      <h2>Local Storage and Session Storage</h2>
+      <button onclick="saveToLocalStorage()">Save to Local Storage</button>
+      <button onclick="saveToSessionStorage()">Save to Session Storage</button>
+      <button onclick="clearLocalStorage()">Clear Local Storage</button>
+      <button onclick="clearSessionStorage()">Clear Session Storage</button>
+
+      <p id="localStorageInfo"></p>
+      <p id="sessionStorageInfo"></p>
+
+      <script>
+        // Check localStorage and sessionStorage data
+        document.getElementById(
+          "localStorageInfo"
+        ).innerText = `Local Storage: ${
+          localStorage.getItem("myLocalStorageData") || "No data"
+        }`;
+        document.getElementById(
+          "sessionStorageInfo"
+        ).innerText = `Session Storage: ${
+          sessionStorage.getItem("mySessionStorageData") || "No data"
+        }`;
+
+        // Save data to localStorage
+        function saveToLocalStorage() {
+          localStorage.setItem(
+            "myLocalStorageData",
+            "This is data stored in Local Storage"
+          );
+          document.getElementById(
+            "localStorageInfo"
+          ).innerText = `Local Storage: ${localStorage.getItem(
+            "myLocalStorageData"
+          )}`;
+        }
+
+        // Save data to sessionStorage
+        function saveToSessionStorage() {
+          sessionStorage.setItem(
+            "mySessionStorageData",
+            "This is data stored in Session Storage"
+          );
+          document.getElementById(
+            "sessionStorageInfo"
+          ).innerText = `Session Storage: ${sessionStorage.getItem(
+            "mySessionStorageData"
+          )}`;
+        }
+
+        // Clear localStorage
+        function clearLocalStorage() {
+          localStorage.removeItem("myLocalStorageData");
+          document.getElementById("localStorageInfo").innerText =
+            "Local Storage: No data";
+        }
+
+        // Clear sessionStorage
+        function clearSessionStorage() {
+          sessionStorage.removeItem("mySessionStorageData");
+          document.getElementById("sessionStorageInfo").innerText =
+            "Session Storage: No data";
+        }
+      </script>
+    </section>
+  </body>
+</html>
